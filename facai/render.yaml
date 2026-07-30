@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: facai-workbench
+    runtime: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: "3001"
+      - key: NODE_ENV
+        value: production

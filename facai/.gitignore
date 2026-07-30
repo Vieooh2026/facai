@@ -1,0 +1,6 @@
+node_modules/
+public/assets/
+facai.db
+facai.db-wal
+facai.db-shm
+*.log
