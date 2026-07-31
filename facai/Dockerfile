@@ -2,6 +2,9 @@ FROM node:22-bookworm
 
 WORKDIR /app
 
+# 持久数据目录（Render 磁盘挂载点）
+RUN mkdir -p /app/data
+
 # better-sqlite3 需要系统编译工具
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 make g++ \

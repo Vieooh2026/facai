@@ -1,9 +1,13 @@
 import Database from 'better-sqlite3';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import fs from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const db = new Database(path.join(__dirname, '../../facai.db'));
+// 数据目录独立出来，便于挂载持久磁盘（重启不丢数据）
+const dbDir = path.join(__dirname, '../../data');
+fs.mkdirSync(dbDir, { recursive: true });
+const db = new Database(path.join(dbDir, 'facai.db'));
 db.pragma('journal_mode = WAL');
 
 db.exec(`
